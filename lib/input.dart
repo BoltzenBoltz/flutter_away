@@ -3,14 +3,26 @@ import 'package:flutter/services.dart';
 import 'package:flutter_away/data_storage.dart';
 import 'package:flutter_away/weight_collector.dart';
 
-class InputRoute extends StatelessWidget {
+class InputRoute extends StatefulWidget {
   const InputRoute({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _InputPage();
+}
+
+class _InputPage extends State<InputRoute> {
+  TextEditingController dateController = TextEditingController();
+  String date =
+      '${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}';
+  @override
+  void initState() {
+    dateController.text = "";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     String weight = "";
-    DateTime now = DateTime.now();
-    String date = '${now.day}.${now.month}.${now.year}';
     WeightCollector collector = WeightCollector();
 
     DateTime stringToDateTime(String date) {
@@ -24,10 +36,6 @@ class InputRoute extends StatelessWidget {
     void updateWeight(String value) {
       value = value.replaceAll(',', '.');
       weight = value;
-    }
-
-    void updateDate(DateTime newDate) {
-      date = '${newDate.day}.${newDate.month}.${newDate.year}';
     }
 
     void safeEntry(Entry new_entry) {
@@ -46,7 +54,9 @@ class InputRoute extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(top: 30)),
               TextField(
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'current Weight'),
+                    border: OutlineInputBorder(),
+                    icon: Icon(Icons.bar_chart_rounded),
+                    labelText: 'current Weight'),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(
@@ -57,24 +67,30 @@ class InputRoute extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.only(top: 30)),
               TextField(
-                controller: TextEditingController(text: date),
+                controller: dateController,
                 decoration: const InputDecoration(
                     icon: Icon(Icons.calendar_today),
                     border: OutlineInputBorder(),
                     labelText: 'current Date'),
+                readOnly: true,
                 // keyboardType: TextInputType.datetime,
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
                       context: context,
-                      initialDate: now,
+                      initialDate: DateTime.now(),
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2101));
+
                   if (pickedDate != null) {
                     print(pickedDate);
+                    String formattedDate =
+                        '${pickedDate.day}.${pickedDate.month}.${pickedDate.year}';
 
-                    // now = pickedDate;
-                    updateDate(pickedDate);
-                    print('📅 Date $date');
+                    setState(() {
+                      print('update date: $date --> $formattedDate');
+                      dateController.text = formattedDate;
+                      date = formattedDate;
+                    });
                   } else {
                     print('Date is not selected');
                   }

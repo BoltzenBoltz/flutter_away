@@ -13,7 +13,14 @@ class WeightCollector {
 
   List<Entry> getEntryList() => _entrys;
 
-  void addEntryToList(Entry entry) => _entrys.add(entry);
+  void addEntryToList(Entry entry) {
+    _entrys.add(entry);
+    _sortList();
+  }
+
+  void _sortList() {
+    _entrys.sort(((a, b) => a.date.compareTo(b.date)));
+  }
 
   void clearEntryList() => _entrys.clear();
 
@@ -29,7 +36,6 @@ class WeightCollector {
     DateTime curDate;
     if (_entrys.isNotEmpty) {
       curDate = _entrys[0].getDate();
-      print('curDate = $curDate');
     } else {
       curDate = DateTime(2000, 1, 1);
     }
@@ -38,7 +44,6 @@ class WeightCollector {
 
       // Adding Month-Year-Display
       if (isMonthWidget(curDate, curEntry.getDate(), list.isEmpty)) {
-        print('🕛neuer Monat');
         curDate = curEntry.date;
         list.add(const Padding(padding: EdgeInsets.only(top: 10)));
         list.add(getMonthWidget(curEntry));
@@ -103,8 +108,6 @@ class WeightCollector {
   }
 
   bool isMonthWidget(DateTime curDate, DateTime entryDate, bool isListEmpty) {
-    print('${curDate.month}.${curDate.year}');
-    print('${entryDate.month}.${entryDate.year}');
     if (curDate.month < entryDate.month && curDate.year <= entryDate.year) {
       return true;
     } else if (isListEmpty) {
@@ -118,8 +121,6 @@ class WeightCollector {
   @override
   String toString() {
     String res = '';
-    print(DateTime.now());
-    print(_entrys);
     for (Entry entry in _entrys) {
       res += entry.toString();
     }
