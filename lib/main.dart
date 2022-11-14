@@ -47,16 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getFileData() async {
-    print('======================');
-    print('start get file data');
     var entrysOfFile = await storage.readEntrys();
     collector.clearEntryList();
     for (Entry entry in entrysOfFile) {
       collector.addEntryToList(entry);
     }
-    print('entrysOfFile: $entrysOfFile');
-    print('end get file data');
-    print('======================');
     if (!startup) {
       startup = true;
       setState(() {});
@@ -71,9 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     getFileData();
-    print('init c');
     List<Widget> c = collector.getWeightWidgets();
-    print('list before build: $c');
 
     return Scaffold(
       appBar: AppBar(
@@ -122,7 +115,6 @@ class _MyHomePageState extends State<MyHomePage> {
             title: const Text('Refresh'),
             onTap: () {
               setState(() {
-                print('refreshing...');
                 Navigator.pop(context);
               });
             },
@@ -130,10 +122,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ListTile(
             title: const Text('Debug Informations'),
             onTap: () {
-              print('Debug-Infos:');
               WeightCollector collector = WeightCollector();
               int listLength = collector.listLength();
-              print('listLength: $listLength');
               Navigator.pop(context);
             },
           ),
