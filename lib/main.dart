@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_away/data_storage.dart';
 import 'package:flutter_away/input.dart';
+import 'package:flutter_away/page_preset.dart';
 import 'package:flutter_away/weight_collector.dart';
 
 void main() {
@@ -42,8 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const InputRoute(),
+          builder: (context) => const InputPage(),
         )).then((value) => setState(() {}));
+  }
+
+  void goToPresetPage() {
+    Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const PresetPage()))
+        .then((value) => setState((() {})));
   }
 
   void getFileData() async {
@@ -104,10 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
               // close drawer
               Navigator.pop(context);
               // navigate to Settings-Page
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const InputRoute())));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => const InputPage())));
               // Navigator.pop(context);
             },
           ),
@@ -134,7 +139,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   storage.clearFile();
                   Navigator.pop(context);
                 });
-              })
+              }),
+          ListTile(
+              title: const Text('show Preset Page'),
+              onTap: () => goToPresetPage())
         ],
       )),
 
