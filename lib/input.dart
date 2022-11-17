@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_away/data_storage.dart';
 import 'package:flutter_away/weight_collector.dart';
 
-class InputRoute extends StatefulWidget {
-  const InputRoute({super.key});
+class InputPage extends StatefulWidget {
+  const InputPage({super.key});
 
   @override
   State<StatefulWidget> createState() => _InputPage();
 }
 
-class _InputPage extends State<InputRoute> {
+class _InputPage extends State<InputPage> {
   TextEditingController dateController = TextEditingController();
   String date =
       '${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}';
@@ -46,7 +46,7 @@ class _InputPage extends State<InputRoute> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Second Route'),
+          title: const Text('Add Entry'),
         ),
         body: Center(
           child: Column(
