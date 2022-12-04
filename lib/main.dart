@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_away/data_storage.dart';
-import 'package:flutter_away/input.dart';
-import 'package:flutter_away/page_preset.dart';
-import 'package:flutter_away/homepage.dart';
+import 'package:flutter_away/page_weight_input.dart';
+import 'package:flutter_away/z_page_preset.dart';
+import 'package:flutter_away/page_homepage.dart';
 import 'package:flutter_away/weight_collector.dart';
 
 void main() {

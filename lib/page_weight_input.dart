@@ -14,6 +14,7 @@ class _InputPage extends State<InputPage> {
   TextEditingController dateController = TextEditingController();
   String date =
       '${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}';
+  String weight = "";
   @override
   void initState() {
     dateController.text = "";
@@ -22,7 +23,6 @@ class _InputPage extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    String weight = "";
     WeightCollector collector = WeightCollector();
 
     DateTime stringToDateTime(String date) {
@@ -34,8 +34,8 @@ class _InputPage extends State<InputPage> {
     }
 
     void updateWeight(String value) {
-      value = value.replaceAll(',', '.');
-      weight = value;
+      print('Changing $weight to ${value.replaceAll(',', '.')}');
+      weight = value.replaceAll(',', '.');
     }
 
     void safeEntry(Entry new_entry) {
@@ -101,6 +101,8 @@ class _InputPage extends State<InputPage> {
               ElevatedButton(
                   onPressed: () {
                     try {
+                      print('Weight: $weight');
+                      print('Date: $date');
                       double dWeight = double.parse(weight);
                       DateTime correctDate = stringToDateTime(date);
                       Entry entry = Entry(dWeight, correctDate);
@@ -115,6 +117,7 @@ class _InputPage extends State<InputPage> {
                                 BorderRadius.all(Radius.circular(10.0))),
                         behavior: SnackBarBehavior.floating,
                       ));
+                      print(e);
                     }
                   },
                   child: const Text('Submitt'))

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_away/data_storage.dart';
-import 'package:flutter_away/homepage.dart';
-import 'package:flutter_away/input.dart';
-import 'package:flutter_away/page_preset.dart';
+import 'package:flutter_away/global_variable.dart';
+import 'package:flutter_away/page_weight_input.dart';
+import 'package:flutter_away/z_page_preset.dart';
 import 'package:flutter_away/weight_collector.dart';
 
 class WeightCheck extends StatefulWidget {
@@ -15,7 +15,6 @@ class WeightCheck extends StatefulWidget {
 class _WeightCheckState extends State<WeightCheck> {
   DataStorage storage = DataStorage();
   WeightCollector collector = WeightCollector();
-  bool startup = false;
 
   void onActionPressed() {
     Navigator.push(
@@ -37,8 +36,8 @@ class _WeightCheckState extends State<WeightCheck> {
     for (Entry entry in entrysOfFile) {
       collector.addEntryToList(entry);
     }
-    if (!startup) {
-      startup = true;
+    if (GlobalVariable.startup) {
+      GlobalVariable.startup = false;
       setState(() {});
     }
   }
