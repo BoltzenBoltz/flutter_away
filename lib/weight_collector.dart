@@ -138,6 +138,8 @@ class Entry {
 
   DateTime getDate() => date;
 
+  String dateToString() => '${date.day}.${date.month}.${date.year}';
+
   @override
   String toString() => 'w:$weight-d:${date.day}.${date.month}.${date.year};';
 }
