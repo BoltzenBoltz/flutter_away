@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter_away/weight_collector.dart';
+import 'package:flutter_away/functionalities/weight_collector.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DataStorage {

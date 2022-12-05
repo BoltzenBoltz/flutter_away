@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_away/Element_factory.dart';
+import 'package:flutter_away/functionalities/Element_factory.dart';
 
 class WeightCollector {
   static final WeightCollector _instance = WeightCollector._internal();

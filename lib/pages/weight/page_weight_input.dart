@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_away/data_storage.dart';
-import 'package:flutter_away/weight_collector.dart';
+import 'package:flutter_away/functionalities/data_storage.dart';
+import 'package:flutter_away/functionalities/weight_collector.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});

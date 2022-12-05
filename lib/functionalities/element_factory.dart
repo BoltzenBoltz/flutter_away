@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_away/weight_collector.dart';
+import 'package:flutter_away/functionalities/weight_collector.dart';
 
 class ElementFactory {
   /// creates a [Card] in a [FractionallySizedBox] of the current Entry maintopic ([cardName])

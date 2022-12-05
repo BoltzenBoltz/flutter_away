@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_away/data_storage.dart';
-import 'package:flutter_away/global_variable.dart';
-import 'package:flutter_away/page_weight_input.dart';
+import 'package:flutter_away/functionalities/data_storage.dart';
+import 'package:flutter_away/functionalities/global_variable.dart';
+import 'package:flutter_away/pages/weight/page_weight_input.dart';
 import 'package:flutter_away/z_page_preset.dart';
-import 'package:flutter_away/weight_collector.dart';
+import 'package:flutter_away/functionalities/weight_collector.dart';
 
 class WeightCheck extends StatefulWidget {
   const WeightCheck({super.key});

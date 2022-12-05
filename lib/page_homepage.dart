@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_away/data_storage.dart';
 
 // Functionalities
-import 'package:flutter_away/element_factory.dart';
-import 'package:flutter_away/global_variable.dart';
+import 'package:flutter_away/functionalities/data_storage.dart';
+import 'package:flutter_away/functionalities/element_factory.dart';
+import 'package:flutter_away/functionalities/global_variable.dart';
+import 'package:flutter_away/functionalities/weight_collector.dart';
 
 // Pages
-import 'package:flutter_away/page_weight_check.dart';
-import 'package:flutter_away/page_weight_history.dart';
-import 'package:flutter_away/weight_collector.dart';
-
-import './element_factory.dart';
+import 'package:flutter_away/pages/weight/page_weight_check.dart';
+import 'package:flutter_away/pages/weight/page_weight_history.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
