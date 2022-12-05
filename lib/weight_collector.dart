@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_away/Element_factory.dart';
 
 class WeightCollector {
   static final WeightCollector _instance = WeightCollector._internal();
@@ -48,43 +49,8 @@ class WeightCollector {
         list.add(const Padding(padding: EdgeInsets.only(top: 10)));
         list.add(getMonthWidget(curEntry));
       }
-      String date =
-          '${curEntry.getDate().day}.${curEntry.getDate().month}.${curEntry.getDate().year}';
-      list.add(FractionallySizedBox(
-          widthFactor: 0.8,
-          child: Card(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Date:',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    textAlign: TextAlign.left,
-                  ),
-                  Text(
-                    date,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  const Padding(padding: EdgeInsets.all(5))
-                ],
-              ),
-              const Padding(padding: EdgeInsets.all(10)),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                const Text(
-                  'Weight:',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
-                Text(
-                  '${curEntry.getWeight()}kg',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const Padding(padding: EdgeInsets.all(5))
-              ]),
-            ],
-          ))));
+
+      list.add(ElementFactory.weightCheckCard(curEntry));
     }
     return list;
   }
